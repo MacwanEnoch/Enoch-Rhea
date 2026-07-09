@@ -64,8 +64,8 @@
 
   /* ---- Floral corner images on cover ---- */
   .floral{position:absolute; z-index:4; pointer-events:none}
-  .floral.tl{ top:0; left:0; width:clamp(110px,28vw,300px); }
-  .floral.br{ bottom:0; right:0; width:clamp(120px,30vw,320px); }
+  .floral.tl{ top:0; left:0; width:clamp(220px,56vw,600px); }
+  .floral.br{ bottom:0; right:0; width:clamp(240px,60vw,640px); }
   .floral img{display:block; width:100%; height:auto}
 
   /* ---- Stage (arch card) ---- */
@@ -89,7 +89,6 @@
 
   .stage .content{
     position:relative; z-index:3; text-align:center;
-    /* Generous top & bottom padding significantly lengthens the arch proportionately */
     padding:clamp(100px, 16vw, 150px) clamp(24px, 6vw, 54px) clamp(80px, 14vw, 120px);
   }
   .stage .content > *{animation:fade 1.1s ease both}
@@ -189,7 +188,7 @@
     position: absolute;
     z-index: 1; 
     pointer-events: none;
-    width: clamp(150px, 25vw, 340px);
+    width: clamp(260px, 40vw, 550px);
     opacity: 1; /* Opaque by default at peripherals */
     transition: opacity 0.3s ease;
   }
@@ -198,21 +197,20 @@
   .accent-right { right: 0; transform: translateX(20%); }
   .accent-left { left: 0; transform: translateX(-20%); }
 
-  /* Center background watermark elements (cross, rose, floral) */
+  /* Center background watermark elements (rose, floral) */
   .bg-watermark {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     z-index: -1; /* stays safely behind the text */
     pointer-events: none;
-    opacity: 0.18; /* Semi-transparent so text is perfectly readable */
+    opacity: 0.15; /* Semi-transparent so text is perfectly readable */
   }
   .bg-watermark img { display: block; width: 100%; height: auto; }
 
-  /* Specific positions for center elements */
-  .bg-rose { top: 2%; width: clamp(180px, 35vw, 260px); }
-  .bg-cross { top: 40%; width: clamp(240px, 65vw, 420px); }
-  .bg-floral { bottom: 5%; width: clamp(200px, 45vw, 320px); }
+  /* Spread them out and make them massive to cover the background */
+  .bg-rose { top: 2%; width: clamp(350px, 75vw, 750px); }
+  .bg-floral { bottom: 2%; width: clamp(380px, 80vw, 800px); }
 
   /* ===================== RESPONSIVE / MOBILE ===================== */
   
@@ -225,14 +223,14 @@
 
   /* ---- Mobile optimisation ---- */
   @media (max-width:560px){
-    /* Floral images on cover shrink so they don't overlap */
-    .floral.tl{ width:clamp(80px,32vw,160px); top:0; left:0; }
-    .floral.br{ width:clamp(80px,32vw,160px); bottom:0; right:0; }
+    /* Floral images on cover shrink slightly so they don't overlap too much */
+    .floral.tl{ width:clamp(160px,64vw,320px); top:0; left:0; }
+    .floral.br{ width:clamp(160px,64vw,320px); bottom:0; right:0; }
 
     /* Page peripheral accents fade heavily on mobile to ensure perfect text readability */
     .corner-accent {
       opacity: 0.15; 
-      width: clamp(110px, 30vw, 180px);
+      width: clamp(180px, 45vw, 320px);
     }
     .accent-right { transform: translateX(10%); }
     .accent-left { transform: translateX(-10%); }
@@ -254,7 +252,7 @@
 
   /* Very small phones (≤380px) */
   @media (max-width:380px){
-    .floral.tl, .floral.br{ width:72px }
+    .floral.tl, .floral.br{ width:144px }
     #cover{ padding:68px 10px 58px }
   }
 
@@ -361,7 +359,6 @@
       
       <!-- Central semi-transparent watermark images -->
       <div class="bg-watermark bg-rose"><img src="rose-ctr.png" alt=""></div>
-      <div class="bg-watermark bg-cross"><img src="cross-ctr.png" alt=""></div>
       <div class="bg-watermark bg-floral"><img src="floral-ctr.png" alt=""></div>
 
       <p class="sec-eyebrow rev">together with their families</p>
