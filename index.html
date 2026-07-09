@@ -182,18 +182,33 @@
 
   #invitation{background:radial-gradient(120% 80% at 50% 0%, var(--paper) 0%, var(--bg) 60%)}
 
+  /* ===================== INNER PAGE ELEMENTS ===================== */
+  
   /* Website background floral accents distributed down the pages */
   .corner-accent {
     position: absolute;
     z-index: 1; 
     pointer-events: none;
     width: clamp(150px, 25vw, 340px);
-    opacity: 0.85; /* Soft transparency on desktop */
+    opacity: 0.35; /* Reduced opacity to ensure text remains clearly visible */
   }
   .corner-accent img { width: 100%; height: auto; display: block; }
   /* Pushed slightly off the screen edges for framing */
   .accent-right { right: 0; transform: translateX(20%); }
   .accent-left { left: 0; transform: translateX(-20%); }
+
+  /* Center cross background */
+  .bg-cross {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(260px, 70vw, 500px);
+    opacity: 0.18; /* highly transparent so it acts as a subtle watermark */
+    z-index: -1; /* stays behind the text */
+    pointer-events: none;
+  }
+  .bg-cross img { width: 100%; height: auto; display: block; }
 
   /* ===================== RSVP ===================== */
   #rsvp{background:linear-gradient(180deg,var(--bg) 0%, var(--bg2) 100%); scroll-margin-top:60px}
@@ -242,11 +257,11 @@
 
     /* Page floral accents fade heavily on mobile to ensure perfect text readability */
     .corner-accent {
-      opacity: 0.25; 
-      width: clamp(110px, 28vw, 160px);
+      opacity: 0.2; 
+      width: clamp(110px, 30vw, 180px);
     }
-    .accent-right { transform: translateX(15%); }
-    .accent-left { transform: translateX(-15%); }
+    .accent-right { transform: translateX(10%); }
+    .accent-left { transform: translateX(-10%); }
 
     /* Cover layout adjustments */
     #cover{
@@ -299,7 +314,7 @@
 
       <p class="parent-line" style="margin-top:14px">Invite you to their wedding</p>
 
-      <!-- The button is now neatly placed inside the arch -->
+      <!-- The button is neatly placed inside the arch -->
       <div class="enter">
         <a class="btn" id="openBtn" href="#invitation">Open Invitation</a>
       </div>
@@ -320,12 +335,19 @@
   <!-- ===================== INVITATION ===================== -->
   <section id="invitation" style="scroll-margin-top:54px">
     
-    <!-- Distributed floral accents down the invitation section -->
-    <div class="corner-accent accent-right" style="top:-2%;"><img src="floral-tl.png" alt="" style="transform:scaleX(-1) rotate(10deg)"></div>
-    <div class="corner-accent accent-left" style="top:35%;"><img src="floral-br.png" alt=""></div>
-    <div class="corner-accent accent-right" style="bottom:-2%;"><img src="floral-tl.png" alt="" style="transform:scaleX(-1) rotate(-15deg)"></div>
+    <!-- Distributed floral accents (tl ONLY on left, br ONLY on right, others randomly dispersed) -->
+    <!-- LEFT SIDE -->
+    <div class="corner-accent accent-left" style="top:-2%;"><img src="floral-tl.png" alt=""></div>
+    <div class="corner-accent accent-left" style="top:50%;"><img src="floral-1.png" alt=""></div>
+    
+    <!-- RIGHT SIDE -->
+    <div class="corner-accent accent-right" style="top:25%;"><img src="floral-br.png" alt=""></div>
+    <div class="corner-accent accent-right" style="bottom:-2%;"><img src="floral-2.png" alt="" style="transform: scaleX(-1) rotate(-10deg);"></div>
 
     <div class="sheet">
+      <!-- Cross centered in the background of the invitation text -->
+      <div class="bg-cross"><img src="cross.png" alt="Cross Background"></div>
+
       <p class="sec-eyebrow rev">together with their families</p>
       <h2 class="sec-title rev">Rhea &amp; Enoch</h2>
       <p class="sec-eyebrow rev" style="margin-top:6px">invite you to join their wedding</p>
@@ -386,9 +408,13 @@
   <section id="rsvp">
     
     <!-- Distributed floral accents continuing in the RSVP section -->
-    <div class="corner-accent accent-left" style="top:0%;"><img src="floral-br.png" alt="" style="transform:rotate(15deg)"></div>
-    <div class="corner-accent accent-right" style="bottom:-5%;"><img src="floral-tl.png" alt="" style="transform:scaleX(-1) rotate(-10deg)"></div>
-
+    <!-- RIGHT SIDE -->
+    <div class="corner-accent accent-right" style="top:5%;"><img src="floral-br.png" alt=""></div>
+    <div class="corner-accent accent-right" style="bottom:-5%;"><img src="floral-1.png" alt="" style="transform: scaleX(-1) rotate(15deg);"></div>
+    
+    <!-- LEFT SIDE -->
+    <div class="corner-accent accent-left" style="top:30%;"><img src="floral-tl.png" alt="" style="transform: rotate(10deg);"></div>
+    
     <div class="wrap">
       <div class="card rev">
         <h2>RSVP</h2>
