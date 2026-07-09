@@ -184,31 +184,79 @@
 
   /* ===================== INNER PAGE ELEMENTS ===================== */
   
-  /* Website background floral accents distributed down the pages */
+  /* Peripheral floral accents on the sides */
   .corner-accent {
     position: absolute;
     z-index: 1; 
     pointer-events: none;
     width: clamp(150px, 25vw, 340px);
-    opacity: 0.35; /* Reduced opacity to ensure text remains clearly visible */
+    opacity: 1; /* Opaque by default at peripherals */
+    transition: opacity 0.3s ease;
   }
   .corner-accent img { width: 100%; height: auto; display: block; }
   /* Pushed slightly off the screen edges for framing */
   .accent-right { right: 0; transform: translateX(20%); }
   .accent-left { left: 0; transform: translateX(-20%); }
 
-  /* Center cross background */
-  .bg-cross {
+  /* Center background watermark elements (cross, rose, floral) */
+  .bg-watermark {
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: clamp(260px, 70vw, 500px);
-    opacity: 0.18; /* highly transparent so it acts as a subtle watermark */
-    z-index: -1; /* stays behind the text */
+    transform: translateX(-50%);
+    z-index: -1; /* stays safely behind the text */
     pointer-events: none;
+    opacity: 0.18; /* Semi-transparent so text is perfectly readable */
   }
-  .bg-cross img { width: 100%; height: auto; display: block; }
+  .bg-watermark img { display: block; width: 100%; height: auto; }
+
+  /* Specific positions for center elements */
+  .bg-rose { top: 2%; width: clamp(180px, 35vw, 260px); }
+  .bg-cross { top: 40%; width: clamp(240px, 65vw, 420px); }
+  .bg-floral { bottom: 5%; width: clamp(200px, 45vw, 320px); }
+
+  /* ===================== RESPONSIVE / MOBILE ===================== */
+  
+  /* When the screen width shrinks and peripheral florals begin to overlap the text container */
+  @media (max-width: 1100px) {
+    .corner-accent {
+      opacity: 0.25; /* Reduce opacity when overlapping */
+    }
+  }
+
+  /* ---- Mobile optimisation ---- */
+  @media (max-width:560px){
+    /* Floral images on cover shrink so they don't overlap */
+    .floral.tl{ width:clamp(80px,32vw,160px); top:0; left:0; }
+    .floral.br{ width:clamp(80px,32vw,160px); bottom:0; right:0; }
+
+    /* Page peripheral accents fade heavily on mobile to ensure perfect text readability */
+    .corner-accent {
+      opacity: 0.15; 
+      width: clamp(110px, 30vw, 180px);
+    }
+    .accent-right { transform: translateX(10%); }
+    .accent-left { transform: translateX(-10%); }
+
+    /* Cover layout adjustments */
+    #cover{
+      padding:clamp(80px,18vw,120px) 12px clamp(70px,16vw,110px);
+      justify-content:center;
+    }
+
+    .verse-tr{ margin-bottom:16px; }
+
+    .stage{width:96vw}
+    .stage .content{padding-left:14px; padding-right:14px}
+    .names{font-size:clamp(36px,10vw,52px)}
+    .datetime{font-size:clamp(20px,6.5vw,30px)}
+    .sheet{padding-left:20px; padding-right:20px}
+  }
+
+  /* Very small phones (≤380px) */
+  @media (max-width:380px){
+    .floral.tl, .floral.br{ width:72px }
+    #cover{ padding:68px 10px 58px }
+  }
 
   /* ===================== RSVP ===================== */
   #rsvp{background:linear-gradient(180deg,var(--bg) 0%, var(--bg2) 100%); scroll-margin-top:60px}
@@ -248,41 +296,6 @@
 
   .rev{opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease}
   .rev.in{opacity:1; transform:none}
-
-  /* ---- Mobile optimisation ---- */
-  @media (max-width:560px){
-    /* Floral images on cover shrink so they don't overlap */
-    .floral.tl{ width:clamp(80px,32vw,160px); top:0; left:0; }
-    .floral.br{ width:clamp(80px,32vw,160px); bottom:0; right:0; }
-
-    /* Page floral accents fade heavily on mobile to ensure perfect text readability */
-    .corner-accent {
-      opacity: 0.2; 
-      width: clamp(110px, 30vw, 180px);
-    }
-    .accent-right { transform: translateX(10%); }
-    .accent-left { transform: translateX(-10%); }
-
-    /* Cover layout adjustments */
-    #cover{
-      padding:clamp(80px,18vw,120px) 12px clamp(70px,16vw,110px);
-      justify-content:center;
-    }
-
-    .verse-tr{ margin-bottom:16px; }
-
-    .stage{width:96vw}
-    .stage .content{padding-left:14px; padding-right:14px}
-    .names{font-size:clamp(36px,10vw,52px)}
-    .datetime{font-size:clamp(20px,6.5vw,30px)}
-    .sheet{padding-left:20px; padding-right:20px}
-  }
-
-  /* Very small phones (≤380px) */
-  @media (max-width:380px){
-    .floral.tl, .floral.br{ width:72px }
-    #cover{ padding:68px 10px 58px }
-  }
 </style>
 </head>
 <body class="locked">
@@ -335,18 +348,21 @@
   <!-- ===================== INVITATION ===================== -->
   <section id="invitation" style="scroll-margin-top:54px">
     
-    <!-- Distributed floral accents (tl ONLY on left, br ONLY on right, others randomly dispersed) -->
+    <!-- Peripheral floral accents (tl ONLY on left, br ONLY on right) -->
     <!-- LEFT SIDE -->
     <div class="corner-accent accent-left" style="top:-2%;"><img src="floral-tl.png" alt=""></div>
-    <div class="corner-accent accent-left" style="top:50%;"><img src="floral-1.png" alt=""></div>
+    <div class="corner-accent accent-left" style="top:50%;"><img src="floral-tl.png" alt="" style="transform: rotate(-15deg);"></div>
     
     <!-- RIGHT SIDE -->
     <div class="corner-accent accent-right" style="top:25%;"><img src="floral-br.png" alt=""></div>
-    <div class="corner-accent accent-right" style="bottom:-2%;"><img src="floral-2.png" alt="" style="transform: scaleX(-1) rotate(-10deg);"></div>
+    <div class="corner-accent accent-right" style="bottom:-2%;"><img src="floral-br.png" alt="" style="transform: rotate(-10deg);"></div>
 
     <div class="sheet">
-      <!-- Cross centered in the background of the invitation text -->
-      <div class="bg-cross"><img src="cross.png" alt="Cross Background"></div>
+      
+      <!-- Central semi-transparent watermark images -->
+      <div class="bg-watermark bg-rose"><img src="rose-ctr.png" alt=""></div>
+      <div class="bg-watermark bg-cross"><img src="cross-ctr.png" alt=""></div>
+      <div class="bg-watermark bg-floral"><img src="floral-ctr.png" alt=""></div>
 
       <p class="sec-eyebrow rev">together with their families</p>
       <h2 class="sec-title rev">Rhea &amp; Enoch</h2>
@@ -407,13 +423,13 @@
   <!-- ===================== RSVP ===================== -->
   <section id="rsvp">
     
-    <!-- Distributed floral accents continuing in the RSVP section -->
+    <!-- Peripheral floral accents continuing in the RSVP section -->
     <!-- RIGHT SIDE -->
     <div class="corner-accent accent-right" style="top:5%;"><img src="floral-br.png" alt=""></div>
-    <div class="corner-accent accent-right" style="bottom:-5%;"><img src="floral-1.png" alt="" style="transform: scaleX(-1) rotate(15deg);"></div>
+    <div class="corner-accent accent-right" style="bottom:-5%;"><img src="floral-br.png" alt="" style="transform: rotate(15deg);"></div>
     
     <!-- LEFT SIDE -->
-    <div class="corner-accent accent-left" style="top:30%;"><img src="floral-tl.png" alt="" style="transform: rotate(10deg);"></div>
+    <div class="corner-accent accent-left" style="top:40%;"><img src="floral-tl.png" alt="" style="transform: rotate(10deg);"></div>
     
     <div class="wrap">
       <div class="card rev">
