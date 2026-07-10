@@ -12,8 +12,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f3f2ec'/%3E%3Cpath d='M20 52 V30 a12 12 0 0 1 24 0 V52' fill='none' stroke='%23c19b3a' stroke-width='3'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Added "Great Vibes" for the elegant signature font style -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Replaced Great Vibes with Alex Brush & Pinyon Script as elegant web-safe fallbacks for the Canva fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Alex+Brush&family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#f4f4f2; --bg2:#eaeae6; --paper:#faf9f6;
@@ -163,16 +163,16 @@
     margin:14px 0 8px;
   }
   
-  /* Signature font for the word "with" */
+  /* Signature font for the word "with" (Tries the Canva font first, falls back to Google's Alex Brush) */
   .with-text{
-    font-family:'Great Vibes', cursive;
+    font-family:'Signature', 'Alex Brush', cursive;
     font-size:clamp(32px,6vw,44px); 
     color:var(--green-soft); 
     font-weight:400;
     margin:0 12px;
     text-transform:lowercase;
     display:inline-block;
-    transform:translateY(-4px); /* Optically aligns the script font slightly up */
+    transform:translateY(-4px); 
   }
 
   .divider{display:flex; align-items:center; justify-content:center; gap:12px; margin:34px auto; color:var(--gold-3)}
@@ -191,7 +191,16 @@
   .vcity{font-family:var(--sans); font-weight:600; font-size:16px; letter-spacing:.18em; text-transform:uppercase; color:var(--green-soft); margin-top:6px}
   .btnrow{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:20px}
 
-  .reception .after{font-family:var(--serif); font-style:italic; font-size:clamp(30px,6vw,42px); color:var(--green); margin-bottom:6px}
+  /* Sloop Script Pro for reception text (Tries the Canva font first, falls back to Google's Pinyon Script) */
+  .reception .after{
+    font-family: 'Sloop Script Pro', 'Pinyon Script', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(38px, 7vw, 52px); 
+    color: var(--green); 
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
 
   .count{display:flex; gap:clamp(10px,3vw,20px); justify-content:center; margin-top:16px; flex-wrap:wrap}
   .ct{width:clamp(68px,17vw,90px); padding:16px 4px 12px; border:1px solid rgba(43,58,47,.15); border-radius:4px; background:var(--paper)}
@@ -375,19 +384,22 @@
       <div class="bg-watermark bg-rose"><img src="rose-ctr.png" alt=""></div>
       <div class="bg-watermark bg-floral"><img src="floral-ctr.png" alt=""></div>
 
+      <!-- Moved Bible Verse to the Top Center -->
+      <div class="divider rev" style="margin-top:10px"></div>
+      <blockquote class="verse-block rev">
+        &#8220;Love is patient and is kind;&#8221;
+        <cite>1 Cor. 13:4</cite>
+      </blockquote>
+      <div class="divider rev"></div>
+
       <p class="sec-eyebrow rev">Mrs. Shiny & Mr. Toms Jacob invite your kind presence to the auspicious occasion of the wedding of their daughter</p>
       
       <!-- Styled inner names! -->
       <h2 class="sec-title rev">Rhea <span class="with-text">with</span> Enoch</h2>
       
       <p class="sec-eyebrow rev" style="margin-top:6px">son of Mrs. Elveena & Mr. Anil Macwan</p>
-      <div class="divider rev"></div>
-
-      <blockquote class="verse-block rev">
-        &#8220;Love is patient and is kind;&#8221;
-        <cite>1 Cor. 13:4</cite>
-      </blockquote>
-
+      
+      <!-- Separator between parents/names block and the venue details -->
       <div class="divider rev"></div>
 
       <div class="when rev">
